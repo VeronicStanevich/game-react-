@@ -1,0 +1,76 @@
+.rules__navigation_buttons{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.navigation_button{
+    text-decoration: none;
+    margin-bottom: 15px;
+    padding: 10px;
+    color: darkblue;
+    background-color: rgba(0,0,225,0.3);
+    border: 2px solid rgba(0,0,225,0.5);
+    font-size: 15px;
+}
+.navigation_button:hover{
+    color: blue;
+    border: 2px solid blue;
+}
+.login__content{
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+}
+.login__data_names{
+    text-align: left;
+    padding: 5px;
+}
+.cards_design{
+    width: 90%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.card_design{
+    width: 170px;
+    height: 230px;
+    background-size: 100% 100% ;
+    border-radius: 9%;
+    box-sizing: border-box;
+}
+.card_design:hover{
+    border: 5px solid darkblue;
+}
+.card_design_1{
+    background-image: url("blueCard.png");
+    border: 1px solid darkblue;
+}
+.card_design_2{
+    background-image: url("blackCard.png");
+    border: 1px solid black;
+
+}
+.card_design_3{
+    background-image: url("redCard.png");
+    border: 1px solid darkred;
+}
+.settings__complexity{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    text-align: left;
+}
+.settings__complexity_position{
+    display: flex;
+    justify-content: center;
+}
+.settings__complexity_hover:hover{
+    color: blue;
+}
+.main_page__user_data{
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
