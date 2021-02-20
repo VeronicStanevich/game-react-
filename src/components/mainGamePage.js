@@ -1,7 +1,7 @@
 import {Login} from "./login";
 import React from "react";
 
-export class MainGamePage extends Login {
+export class MainGamePage extends React.Component {
 
     componentDidMount() {
         const firstName = localStorage.getItem('firstName');

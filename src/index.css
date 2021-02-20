@@ -56,6 +56,9 @@
     background-image: url("redCard.png");
     border: 1px solid darkred;
 }
+.active{
+    border: 5px solid darkblue;
+}
 .settings__complexity{
     display: flex;
     flex-direction: column;

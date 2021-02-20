@@ -1,62 +1,51 @@
-import React from "react";
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {createUserAction} from "../store/actions/user";
 
-export class Login extends React.Component {
-    state = {
+export const Login = (props) => {
+    const [user, setUser] = useState({
         firstName: '',
         lastName: '',
         email: ''
-    };
+    });
+    const dispatch = useDispatch();
 
-    handleChange = (event) => {
+    const handleChange = (event) => {
         const input = event.target;
         const value = input.value;
 
-        this.setState({[input.name]: value});
+        setUser((user) => ({...user, [input.name]: value}));
     };
 
-    handleFormSubmit = () => {
-        const {firstName, lastName, email} = this.state;
-        const results = JSON.parse(localStorage.getItem('users')) || [];
-        localStorage.setItem('firstName', firstName);
-        localStorage.setItem('lastName', lastName);
-        localStorage.setItem('email', email);
-        results.push({
-            firstName,
-            lastName,
-            email
-        });
-        localStorage.setItem('userResultHistory', JSON.stringify(results));
-
-        this.props.history.push('/user_settings');
+    const handleFormSubmit = () => {
+        dispatch(createUserAction(user));
+        props.history.push('/user_settings');
     };
 
-    render() {
-        return (
-            <form onSubmit={this.handleFormSubmit}>
-                <div>
-                    <h2>Fill the form</h2>
-                    <table className="login__content">
-                        <tbody>
-                        <tr>
-                            <td className="login__data_names">First name</td>
-                            <td><label><input name="firstName" type="text" placeholder="First name"
-                                              value={this.state.firstName} onChange={this.handleChange}/></label></td>
-                        </tr>
-                        <tr>
-                            <td className="login__data_names">Last name</td>
-                            <td><label><input name="lastName" type="text" placeholder="Last name"
-                                              value={this.state.lastName} onChange={this.handleChange}/></label></td>
-                        </tr>
-                        <tr>
-                            <td className="login__data_names">Email</td>
-                            <td><label><input name="email" type="email" placeholder="Email" value={this.state.email}
-                                              onChange={this.handleChange}/></label></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <button className="navigation_button" type="submit">Continue</button>
-                    {/*<Link to="/user_settings" className="navigation_button">Continue</Link>*/}
-                </div>
-            </form>);
-    }
+    return (
+        <form onSubmit={handleFormSubmit}>
+            <div>
+                <h2>Fill the form</h2>
+                <table className="login__content">
+                    <tbody>
+                    <tr>
+                        <td className="login__data_names">First name</td>
+                        <td><label><input name="firstName" type="text" placeholder="First name"
+                                          value={user.firstName} onChange={handleChange}/></label></td>
+                    </tr>
+                    <tr>
+                        <td className="login__data_names">Last name</td>
+                        <td><label><input name="lastName" type="text" placeholder="Last name"
+                                          value={user.lastName} onChange={handleChange}/></label></td>
+                    </tr>
+                    <tr>
+                        <td className="login__data_names">Email</td>
+                        <td><label><input name="email" type="email" placeholder="Email" value={user.email}
+                                          onChange={handleChange}/></label></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button className="navigation_button" type="submit">Continue</button>
+            </div>
+        </form>);
 }
