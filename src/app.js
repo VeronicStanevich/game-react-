@@ -7,6 +7,7 @@ import React from "react";
 import {store, persistor} from "./store"
 import {Provider} from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react'
+import {Congratulations} from "./components/congratulations";
 
 export const App = () => {
     return (
@@ -18,6 +19,7 @@ export const App = () => {
                         <Route path="/login" component={Login}/>
                         <Route path="/user_settings" component={UserSettings}/>
                         <Route path="/main_game_page" component={MainGamePage}/>
+                        <Route path="/congratulations" component={Congratulations}/>
                         <Redirect to="/"/>
                     </Switch>
                 </Router>

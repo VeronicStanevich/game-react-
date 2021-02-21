@@ -43,16 +43,16 @@
 .card_design:hover{
     border: 5px solid darkblue;
 }
-.card_design_1{
+.card_design_1, .front-1{
     background-image: url("blueCard.png");
     border: 1px solid darkblue;
 }
-.card_design_2{
+.card_design_2, .front-2{
     background-image: url("blackCard.png");
     border: 1px solid black;
 
 }
-.card_design_3{
+.card_design_3, .front-3{
     background-image: url("redCard.png");
     border: 1px solid darkred;
 }
@@ -76,4 +76,52 @@
     margin: 20px;
     display: flex;
     justify-content: space-between;
+}
+.flip {
+    -webkit-perspective: 800;
+    width: 170px;
+    height: 230px;
+    position: relative;
+    margin: 50px auto;
+}
+.flip .card.flipped {
+    -webkit-transform: rotatex(-180deg);
+}
+.flip .card {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: 0.5s;
+}
+.flip .card .face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    z-index: 2;
+    font-family: Georgia;
+    font-size: 3em;
+    text-align: center;
+    line-height: 200px;
+}
+.flip .card .front {
+    position: absolute;
+    z-index: 1;
+    /*background: black;*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: white;
+    cursor: pointer;
+}
+.flip .card .back {
+    -webkit-transform: rotatex(-180deg);
+    background: blue;
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+.cardsContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
 }
